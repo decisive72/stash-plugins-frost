@@ -4,9 +4,7 @@ version: 0.1.0
 ui:
   css:
     - frost.css
-    - frost-cards.css
   javascript:
     - frost.js
-    - frost-cards.js
   requires:
     - libmotion
