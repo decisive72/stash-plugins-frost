@@ -1,4 +1,5 @@
 name: Frost
+# requires: libmotion
 description: A frosty theme
 version: 0.1.0
 ui:
