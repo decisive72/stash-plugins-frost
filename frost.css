@@ -1,0 +1,243 @@
+:root {
+    --bg-page: rgb(31, 31, 31);
+    --bg-frost: rgba(38, 38, 40, .6);
+    --bg-frost-thick: rgba(40, 40, 40, .7);
+    --bg-frost-thin: rgba(40, 40, 40, .5);
+    --bg-bar-fade: rgba(31, 31, 31, .8);
+    --shadow-frost: rgba(0, 0, 0, .2);
+    --selected-frost: rgba(255, 255, 255, 0.05);
+    --modal-radius: 16px;
+    --border-frost: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+
+body {
+    background-color: var(--bg-page);
+}
+
+nav.top-nav {
+    background: linear-gradient(to bottom, transparent, var(--bg-bar-fade)) !important;
+    justify-content: space-between;
+}
+
+@media (min-width: 1200px) {
+    nav.top-nav {
+        background: linear-gradient(to top, transparent, var(--bg-bar-fade)) !important;
+        height: unset;
+        padding: 0.5rem 1rem;
+    }
+
+    nav.top-nav > :first-child {
+        flex-grow: revert;
+        @media (min-width: 1300px) {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        border: var(--border-frost);
+        border-radius: 999px;
+
+        backdrop-filter: blur(16px) saturate(220%);
+        background-color: var(--bg-frost) !important;
+        box-shadow: 0 10px 40px var(--shadow-frost);
+        content: "";
+
+        div {
+            padding: 0 !important;
+        }
+        a, .main-nav-menu-item {
+            border-radius: 999px;
+            padding: 0.5rem 1.5rem !important;
+            box-shadow: none !important;
+            color: #f5f8fa;
+            svg {
+                display: none !important;
+            }
+            &.active {
+                background-color: var(--selected-frost);
+            }
+            &:not(.active) {
+                filter: brightness(0.9);
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    nav.top-nav {
+        .btn {
+            transition: outline-offset 0.1s ease-in 0s, background-color 0.1s ease-in 0s !important;
+            outline-offset: 2px;
+        }
+
+        .btn:not(:disabled):not(.disabled):hover, :not(.active) > .btn:not(:disabled):not(.disabled):not(.active):focus {
+            filter: none !important;
+            outline: 0.5px solid rgba(255, 255, 255, 0.2);
+            outline-offset: 4px;
+            background-color: rgba(138, 155, 168, .15);
+        }
+
+        .btn:not(:disabled):not(.disabled):active {
+            outline-offset: 6px !important;
+            background-color: rgba(138, 155, 168, .3) !important;
+        }
+    }
+}
+
+.navbar-buttons > *:not(.nav-menu-toggle):not(.utility-buttons) {
+    a:hover {
+        text-decoration: none;
+    }
+    button {
+        font-weight: 500;
+        padding: 0.75rem 1.5rem !important;
+
+        backdrop-filter: blur(16px) saturate(220%);
+        background-color: var(--bg-frost) !important;
+        box-shadow: 0 10px 40px var(--shadow-frost) !important;
+        border: 0.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+
+        transition: background-color 0.2s ease-in-out 0s;
+
+        &:hover, &:active {
+            background-color: color-mix(in srgb, var(--bg-frost), var(--selected-frost)) !important;
+        }
+    }
+
+    & .btn-primary {
+        color: #48aff0;
+    }
+}
+
+.nav-menu-toggle {
+    border-radius: 999px;
+    padding: 1rem !important;
+    width: unset !important;
+
+    backdrop-filter: blur(16px) saturate(220%);
+    background-color: var(--bg-frost) !important;
+    box-shadow: 0 10px 40px var(--shadow-frost);
+
+    transition: background-color 0.2s ease-in-out 0s;
+
+    &:hover, &:active {
+        background-color: color-mix(in srgb, var(--bg-frost), var(--selected-frost)) !important;
+    }
+}
+
+.utility-buttons {
+    display: flex;
+    & > :first-child {
+        padding: 0 !important;
+        svg {
+            margin: 0 !important;
+        }
+        span {
+            display: none !important;
+        }
+    }
+    button {
+        border-radius: 999px;
+        box-shadow: none !important;
+        padding: 1rem !important;
+    }
+    .active > button {
+        background-color: var(--selected-frost);
+    }
+}
+
+@media (min-width: 576px) {
+    .utility-buttons {
+        border: 0.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+
+        backdrop-filter: blur(16px) saturate(220%);
+        background-color: var(--bg-frost) !important;
+        box-shadow: 0 10px 40px var(--shadow-frost);
+    }
+
+    .tasks-panel-queue {
+        backdrop-filter: blur(16px) saturate(220%);
+        background-color: var(--bg-frost-thick) !important;
+        box-shadow: 0 10px 40px var(--shadow-frost);
+
+        top: 4rem !important;
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .tasks-panel-tasks {
+        margin-top: 2rem;
+    }
+}
+
+.detail-header.full-width {
+    background-color: var(--bg-page);
+}
+
+.detail-header.sticky {
+    display: none !important;
+}
+
+.popover {
+    background-color: var(--bg-frost-thick);
+    backdrop-filter: saturate(220%) blur(60px);
+    .arrow::before, .arrow::after {
+        border-color: transparent;
+    }
+}
+
+div.react-select__menu, div.dropdown-menu {
+    background-color: var(--bg-frost-thick) !important;
+    backdrop-filter: saturate(220%) blur(60px);
+
+    & > .bg-secondary {
+        background-color: transparent !important;
+
+        &:hover {
+            background-color: var(--selected-frost) !important;
+        }
+    }
+}
+
+input:not(.react-select__input), textarea {
+    border: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.main :not(.btn-group) > :not(.rating-stars):not(.count-button) > .btn:not(:has(> svg:first-child:last-child)) {
+    padding: 0.375rem 1.5rem;
+    border-radius: 0.375rem;
+}
+
+.modal-header {
+    border-radius: var(--modal-radius) var(--modal-radius) 0 0;
+}
+
+.modal-footer {
+    border-radius: 0 0 var(--modal-radius) var(--modal-radius);
+}
+
+.setting-section {
+    .card {
+        border-radius: var(--modal-radius);
+        background-color: #2b2b2b;
+    }
+    .setting:not(:last-child), .setting-group:not(:last-child) {
+        border-bottom: 1px solid #4a4a4a;
+    }
+    .stash-row.bg-dark {
+        background-color: #343434 !important;
+    }
+    .btn.btn-secondary {
+        background-color: #404040;
+        border-color: #404040;
+        &:hover {
+            background-color: #484848;
+        }
+    }
+    thead {
+        background-color: var(--bg-frost-thick) !important;
+        backdrop-filter: saturate(220%) blur(60px);
+    }
+}
