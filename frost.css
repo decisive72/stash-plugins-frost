@@ -19,13 +19,15 @@ nav.top-nav {
     justify-content: space-between;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 576px) {
     nav.top-nav {
         background: linear-gradient(to top, transparent, var(--bg-bar-fade)) !important;
         height: unset;
         padding: 0.5rem 1rem;
     }
+}
 
+@media (min-width: 1200px) {
     nav.top-nav > :first-child {
         flex-grow: revert;
         @media (min-width: 1300px) {
@@ -244,4 +246,12 @@ input:not(.react-select__input), textarea {
         background-color: var(--bg-frost-thick) !important;
         backdrop-filter: saturate(220%) blur(60px);
     }
+}
+
+.filtered-list-toolbar {
+    background-color: transparent;
+}
+
+.detail-body nav {
+    border-bottom: none;
 }
