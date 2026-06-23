@@ -255,3 +255,7 @@ input:not(.react-select__input), textarea {
 .detail-body nav {
     border-bottom: none;
 }
+
+.scene-card-preview-image, .scene-card-preview-video, .scene-marker-card-preview-image, .scene-marker-card-preview-video, .gallery-card-preview-image, .gallery-card-preview-video {
+    object-position: center;
+}
