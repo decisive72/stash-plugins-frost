@@ -83,7 +83,6 @@
     });
 
     PluginApi.patch.after("Pagination", function (_, __, result) {
-        console.log({_, __, result})
         if (!React.isValidElement(result) || result.props.className !== "pagination") {
             return result;
         }
