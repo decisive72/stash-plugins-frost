@@ -5,9 +5,11 @@
     --bg-frost-thin: rgba(40, 40, 40, .5);
     --bg-bar-fade: rgba(31, 31, 31, .8);
     --shadow-frost: rgba(0, 0, 0, .2);
-    --selected-frost: rgba(255, 255, 255, 0.05);
+    --selected-frost: rgba(255, 255, 255, 0.08);
     --modal-radius: 16px;
     --border-frost: 0.5px solid rgba(255, 255, 255, 0.2);
+    --button-transition: outline-offset 0.1s ease-in 0s,
+        background-color 0.1s ease-in 0s;
 }
 
 body {
@@ -74,7 +76,7 @@ nav.top-nav {
 @media (min-width: 576px) {
     nav.top-nav {
         .btn {
-            transition: outline-offset 0.1s ease-in 0s, background-color 0.1s ease-in 0s !important;
+            transition: var(--button-transition) !important;
             outline-offset: 2px;
         }
 
@@ -164,6 +166,113 @@ nav.top-nav {
     }
 }
 
+.pagination.btn-group,
+.btn-toolbar>.btn-group,
+.btn-toolbar>.list-operations>.btn-group {
+    width: fit-content;
+
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    box-shadow: 0 10px 40px var(--shadow-frost);
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+
+        background-color: var(--bg-frost);
+        backdrop-filter: blur(16px) saturate(220%);
+    }
+
+    button {
+        border-radius: 999px !important;
+        border-color: transparent;
+        box-shadow: none !important;
+
+        padding: 0.5rem 1rem !important;
+
+        &:has(> svg) {
+            padding: 0.5rem 0.75rem !important;
+        }
+
+        background-color: transparent;
+
+        transition: var(--button-transition) !important;
+        outline-offset: 2px;
+
+        &:not(:disabled):not(.disabled):hover,
+        &:not(:disabled):not(.disabled):focus {
+            outline: 0.5px solid rgba(255, 255, 255, 0.2);
+            outline-offset: 4px;
+            background-color: rgba(138, 155, 168, .15);
+        }
+
+        &:not(:disabled):not(.disabled):active {
+            outline-offset: 6px !important;
+            background-color: rgba(138, 155, 168, .3) !important;
+        }
+
+        &.btn-danger {
+            color: var(--danger, #db3737);
+        }
+    }
+
+    .btn.active:not(:disabled):not(.disabled) {
+        background-color: var(--selected-frost);
+        border-color: transparent;
+    }
+}
+
+.btn-toolbar>.zoom-slider-container {
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    box-shadow: 0 10px 40px var(--shadow-frost);
+    background-color: var(--bg-frost);
+    backdrop-filter: blur(16px) saturate(220%);
+
+    padding: 0 1rem;
+
+    input {
+        border: 1px solid transparent;
+        height: calc(1.5em + 0.5rem * 2);
+    }
+}
+
+.btn-toolbar>.page-size-selector {
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    box-shadow: 0 10px 40px var(--shadow-frost);
+
+    &>select {
+        box-shadow: none !important;
+        border-color: transparent !important;
+        border-radius: 999px;
+        height: calc(1.5em + 0.5rem * 2 + 4px / 3);
+        background-color: var(--bg-frost) !important;
+    }
+
+    transition: var(--button-transition) !important;
+    outline-offset: 2px;
+
+    &:not(:disabled):not(.disabled):hover,
+    &:not(:disabled):not(.disabled):focus {
+        outline: 0.5px solid rgba(255, 255, 255, 0.2);
+        outline-offset: 4px;
+        background-color: rgba(138, 155, 168, .15);
+    }
+
+    &:not(:disabled):not(.disabled):active {
+        outline-offset: 6px !important;
+        background-color: rgba(138, 155, 168, .3) !important;
+    }
+}
+
+.detail-body .filtered-list-toolbar.has-selection {
+    top: 48.75px;
+}
+
 @media (min-width: 576px) {
     .utility-buttons {
         border: 0.5px solid rgba(255, 255, 255, 0.2);
@@ -221,7 +330,7 @@ div.dropdown-menu {
     }
 }
 
-input:not(.react-select__input),
+input:not(.react-select__input):not(.zoom-slider),
 textarea {
     border: 0.5px solid rgba(255, 255, 255, 0.1) !important;
 }

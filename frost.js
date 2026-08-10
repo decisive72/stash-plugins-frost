@@ -1,6 +1,8 @@
 (function () {
     const PluginApi = window.PluginApi;
     const { motion, useAnimation } = window.Motion;
+    const { FontAwesomeIcon } = PluginApi.libraries.ReactFontAwesome;
+    const { faAnglesLeft, faAnglesRight, faAngleLeft, faAngleRight } = PluginApi.libraries.FontAwesomeSolid;
     const React = PluginApi.React;
     const { useCallback } = React;
 
@@ -78,5 +80,32 @@
             },
             props.children
         );
+    });
+
+    PluginApi.patch.after("Pagination", function (_, __, result) {
+        console.log({_, __, result})
+        if (!React.isValidElement(result) || result.props.className !== "pagination") {
+            return result;
+        }
+
+        const buttons = React.Children.toArray(result.props.children);
+        const navigationIcons = [
+            [0, faAnglesLeft],
+            [1, faAngleLeft],
+            [buttons.length - 2, faAngleRight],
+            [buttons.length - 1, faAnglesRight],
+        ];
+
+        navigationIcons.forEach(([index, icon]) => {
+            if (React.isValidElement(buttons[index])) {
+                buttons[index] = React.cloneElement(
+                    buttons[index],
+                    {},
+                    React.createElement(FontAwesomeIcon, { icon })
+                );
+            }
+        });
+
+        return React.cloneElement(result, {}, buttons);
     });
 })();
