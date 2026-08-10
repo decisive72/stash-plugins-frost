@@ -1,0 +1,53 @@
+.setting-section {
+    .card {
+        border-radius: var(--modal-radius);
+        background-color: #2b2b2b;
+    }
+
+    .setting:not(:last-child),
+    .setting-group:not(:last-child) {
+        border-bottom: 1px solid #4a4a4a;
+    }
+
+    .stash-row.bg-dark {
+        background-color: #343434 !important;
+    }
+
+    .btn.btn-secondary {
+        background-color: #404040;
+        border-color: #404040;
+
+        &:hover {
+            background-color: #484848;
+        }
+    }
+
+    thead {
+        background-color: var(--bg-frost-thick) !important;
+        backdrop-filter: saturate(220%) blur(60px);
+    }
+}
+
+.job-table.card {
+    background-color: #303030;
+
+    & .empty-queue-message {
+        color: #bfbfbf;
+    }
+}
+
+@media (min-width: 576px) {
+    .tasks-panel-queue {
+        backdrop-filter: blur(16px) saturate(220%);
+        background-color: var(--bg-frost-thick) !important;
+        box-shadow: 0 10px 40px var(--shadow-frost);
+
+        top: 4rem !important;
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .tasks-panel-tasks {
+        margin-top: 2rem;
+    }
+}

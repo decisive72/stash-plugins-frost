@@ -5,6 +5,8 @@ version: 0.1.0
 ui:
   css:
     - frost.css
+    - styles/misc.css
+    - styles/settings.css
   javascript:
     - frost.js
   requires:
