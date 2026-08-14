@@ -42,7 +42,7 @@
         background-color: var(--bg-frost-thick) !important;
         box-shadow: 0 10px 40px var(--shadow-frost);
 
-        top: 4rem !important;
+        top: 4.5rem !important;
         padding: 1rem;
         border-radius: 16px;
     }

@@ -20,12 +20,14 @@ nav.top-nav> :first-child {
     box-shadow: 0 10px 40px var(--shadow-frost);
 
     margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 @media (min-width: 1200px) {
     nav.top-nav> :first-child {
         flex-grow: revert;
         margin-top: revert;
+        margin-bottom: revert;
 
         @media (min-width: 1300px) {
             position: absolute;
