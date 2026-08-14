@@ -4,8 +4,9 @@
     const { FontAwesomeIcon } = PluginApi.libraries.ReactFontAwesome;
     const { faAnglesLeft, faAnglesRight, faAngleLeft, faAngleRight } = PluginApi.libraries.FontAwesomeSolid;
     const React = PluginApi.React;
-    const { useCallback } = React;
+    const { useCallback, useEffect, useState } = React;
 
+    const ANIMATION_MEDIA_QUERY = "(min-width: 1200px)";
     const STRENGTH = 0.12;
     const LABEL_STRENGTH = 0.08;
 
@@ -15,6 +16,17 @@
     function MagneticNavLink({ children }) {
         const btnControls = useAnimation();
         const labelControls = useAnimation();
+        const [animationsEnabled, setAnimationsEnabled] = useState(() =>
+            window.matchMedia(ANIMATION_MEDIA_QUERY).matches
+        );
+
+        useEffect(() => {
+            const mediaQuery = window.matchMedia(ANIMATION_MEDIA_QUERY);
+            const handleChange = (event) => setAnimationsEnabled(event.matches);
+
+            mediaQuery.addEventListener("change", handleChange);
+            return () => mediaQuery.removeEventListener("change", handleChange);
+        }, []);
 
         const handleMouseMove = useCallback((e) => {
             const rect = e.currentTarget.getBoundingClientRect();
@@ -31,6 +43,8 @@
         }, [btnControls, labelControls]);
 
         const navLink = children;
+        if (!animationsEnabled) return navLink;
+
         const linkContainer = React.Children.only(navLink.props.children);
         const button = React.Children.only(linkContainer.props.children);
         const [icon, label] = React.Children.toArray(button.props.children);

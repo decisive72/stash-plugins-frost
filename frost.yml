@@ -6,6 +6,7 @@ ui:
   css:
     - frost.css
     - styles/misc.css
+    - styles/navbar.css
     - styles/settings.css
   javascript:
     - frost.js
