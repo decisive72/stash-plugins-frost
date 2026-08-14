@@ -16,10 +16,6 @@ body {
     background-color: var(--bg-page);
 }
 
-.main {
-    margin-top: 7px;
-}
-
 .pagination.btn-group,
 .btn-toolbar>.btn-group,
 .btn-toolbar>.list-operations>.btn-group {
